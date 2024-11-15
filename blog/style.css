@@ -31,7 +31,7 @@ a{
 }
 .btn:hover{
     color: white !important;
-    background-color: #006669;
+    background-color: #005255;
 
 }
 header {
@@ -161,12 +161,10 @@ header ul li ul li a:hover{
 .content{
     width: 90%;
     margin: 30px auto 30px;
-    border: 1px solid red;
 }
 .content .main-content {
     width: 70%;
     float: left;
-    border: 1px solid blue;
 
 }
 .content .main-content .recent-post-title{
@@ -175,15 +173,25 @@ header ul li ul li a:hover{
 .content .main-content .post{
     width: 95%;
     height: 270px;
-    margin: 10px auto;
+    margin: 20px auto;
     border-radius: 5px;
     background-color: white;
+    position: relative;
 }
 .content .main-content .post .read-more{
     position: absolute;
     bottom: 10px;
     right: 10px;
-    
+    border: 1px solid #006669;
+    background: transparent;
+    border-radius: 0px;
+    color:#006669 !important;
+}
+.content .main-content .post .read-more:hover{
+    background-color: #006669;
+    color: white !important;
+    transition: .25s;
+
 }
 .content .main-content .post .post-preview{
     padding: 10px;
