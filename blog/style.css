@@ -188,6 +188,17 @@ header ul li ul li a:hover{
     float: left;
 
 }
+.content .main-content.single  {
+    background-color: white;
+    padding: 20px 50px;
+    font-size: 1.1em;
+    border-radius: 5px;
+
+}
+.content .main-content.single .post-title{
+    text-align: center;
+    margin-bottom: 40px;
+}
 .content .main-content .recent-post-title{
     margin: 20px;
 }
@@ -198,6 +209,17 @@ header ul li ul li a:hover{
     border-radius: 5px;
     background-color: white;
     position: relative;
+}
+.content .popular .post {
+    border-top: 1px solid #e0e0e0;
+    margin-top: 10px;
+    padding-top: 10px;
+}
+.content .popular .post img{
+    height: 60px;
+    width: 75px;
+    float: left;
+    margin-right: 10px;
 }
 .content .main-content .post .read-more{
     position: absolute;
@@ -229,6 +251,9 @@ header ul li ul li a:hover{
     width:30% ;
     float: left;
     height: 300px;
+}
+.content .sidebar.single {
+    padding: 0px 10px;
 }
 /* sidebar*/
 .content .sidebar .section{
@@ -340,6 +365,8 @@ header ul li ul li a:hover{
 }
 .footer .footer-content .contact-form .contact-btn{
     float: right;
+    font-size: 1.1em;
+    font-family: "Work Sans",serif;
 
 }
 
