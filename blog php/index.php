@@ -6,7 +6,7 @@
     <!--Font awesome-->
     <script src="https://kit.fontawesome.com/534045aa55.js" crossorigin="anonymous"></script>
     <!--custom stylinf css file-->
-    <link rel="stylesheet" href="blog/css/style.css">
+    <link rel="stylesheet" href="css/style.css">
     <!--Google fonts-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,9 +15,12 @@
 <body>
     <header>
         <div class="logo">
-            <h1 class="logo-text">
+            <a href="index.php">
+                <h1 class="logo-text" >
                 <span>Chak</span>chouka
-            </h1>
+                </h1>
+            </a>
+            
         </div>
         <i class="fa fa-bars menu-toggle"></i>
         <ul class="nav">
@@ -34,7 +37,7 @@
                 </a>
                     
                 <ul>
-                    <li><a href="#">Dashboard</a></li>
+                    <li><a href="admin/posts/index.php">Dashboard</a></li>
                     <li><a href="#" class="logout">Logout</a></li>
                 </ul>
             </li>
@@ -61,7 +64,7 @@
             <div class="post">
                 <img class="slider-image" src="imgs/images.jpg" alt="Food Blog">
                 <div class="post-info">
-                    <h4><a href="single.html">Tasting New Food will change your life </a></h4>
+                    <h4><a href="single.php">Tasting New Food will change your life </a></h4>
                     <i class="far fa-user"> Food Blog 
                     </i>
                     &nbsp;
@@ -71,7 +74,7 @@
             <div class="post">
                 <img class="slider-image" src="imgs/images.jpg" alt="Food Blog">
                 <div class="post-info">
-                    <h4><a href="single.html">Tasting New Food will change your life </a></h4>
+                    <h4><a href="single.php">Tasting New Food will change your life </a></h4>
                     <i class="far fa-user"> Food Blog 
                     </i>
                     &nbsp;
@@ -81,7 +84,7 @@
             <div class="post">
                 <img class="slider-image" src="imgs/images.jpg" alt="Food Blog">
                 <div class="post-info">
-                    <h4><a href="single.html">Tasting New Food will change your life </a></h4>
+                    <h4><a href="single.php">Tasting New Food will change your life </a></h4>
                     <i class="far fa-user"> Food Blog 
                     </i>
                     &nbsp;
@@ -91,7 +94,7 @@
             <div class="post">
                 <img class="slider-image" src="imgs/images.jpg" alt="Food Blog">
                 <div class="post-info">
-                    <h4><a href="single.html">Tasting New Food will change your life </a></h4>
+                    <h4><a href="single.php">Tasting New Food will change your life </a></h4>
                     <i class="far fa-user"> Food Blog 
                     </i>
                     &nbsp;
@@ -101,7 +104,7 @@
             <div class="post">
                 <img class="slider-image" src="imgs/images.jpg" alt="Food Blog">
                 <div class="post-info">
-                    <h4><a href="single.html">Tasting New Food will change your life </a></h4>
+                    <h4><a href="single.php">Tasting New Food will change your life </a></h4>
                     <i class="far fa-user"> Food Blog 
                     </i>
                     &nbsp;
@@ -127,55 +130,55 @@
                     <i class="far calendar"> Mar 11, 2024</i>
                     <p class="preview-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem inventore id harum quo nostrum animi nisi maiores ex corporis dolor sed quae in omnis ducimus, eligendi error, voluptatibus qui minus.
                     </p>
-                    <a href="single.html" class="btn read-more">Read More</a>
+                    <a href="single.php" class="btn read-more">Read More</a>
                 </div>
             </div>
             <div class="post">
                 <img src="imgs/images.jpg" alt="" class="post-image">
                 <div class="post-preview">
-                    <h2><a href="single.html">The strongest and sweetest yet remain to be sung </a></h2>
+                    <h2><a href="single.php">The strongest and sweetest yet remain to be sung </a></h2>
                     <i class="far fa-user"> Mohamed Ben Saker</i>
                     &nbsp;
                     <i class="far calendar"> Mar 11, 2024</i>
                     <p class="preview-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem inventore id harum quo nostrum animi nisi maiores ex corporis dolor sed quae in omnis ducimus, eligendi error, voluptatibus qui minus.
                     </p>
-                    <a href="single.html" class="btn read-more">Read More</a>
+                    <a href="single.php" class="btn read-more">Read More</a>
                 </div>
             </div>
             <div class="post">
                 <img src="imgs/images.jpg" alt="" class="post-image">
                 <div class="post-preview">
-                    <h2><a href="single.html">The strongest and sweetest yet remain to be sung </a></h2>
+                    <h2><a href="single.php">The strongest and sweetest yet remain to be sung </a></h2>
                     <i class="far fa-user"> Mohamed Ben Saker</i>
                     &nbsp;
                     <i class="far calendar"> Mar 11, 2024</i>
                     <p class="preview-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem inventore id harum quo nostrum animi nisi maiores ex corporis dolor sed quae in omnis ducimus, eligendi error, voluptatibus qui minus.
                     </p>
-                    <a href="single.html" class="btn read-more">Read More</a>
+                    <a href="single.php" class="btn read-more">Read More</a>
                 </div>
             </div>
             <div class="post">
                 <img src="imgs/images.jpg" alt="" class="post-image">
                 <div class="post-preview">
-                    <h2><a href="single.html">The strongest and sweetest yet remain to be sung </a></h2>
+                    <h2><a href="single.php">The strongest and sweetest yet remain to be sung </a></h2>
                     <i class="far fa-user"> Mohamed Ben Saker</i>
                     &nbsp;
                     <i class="far calendar"> Mar 11, 2024</i>
                     <p class="preview-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem inventore id harum quo nostrum animi nisi maiores ex corporis dolor sed quae in omnis ducimus, eligendi error, voluptatibus qui minus.
                     </p>
-                    <a href="single.html" class="btn read-more">Read More</a>
+                    <a href="single.php" class="btn read-more">Read More</a>
                 </div>
             </div>
             <div class="post">
                 <img src="imgs/images.jpg" alt="" class="post-image">
                 <div class="post-preview">
-                    <h2><a href="single.html">The strongest and sweetest yet remain to be sung </a></h2>
+                    <h2><a href="single.php">The strongest and sweetest yet remain to be sung </a></h2>
                     <i class="far fa-user"> Mohamed Ben Saker</i>
                     &nbsp;
                     <i class="far calendar"> Mar 11, 2024</i>
                     <p class="preview-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem inventore id harum quo nostrum animi nisi maiores ex corporis dolor sed quae in omnis ducimus, eligendi error, voluptatibus qui minus.
                     </p>
-                    <a href="single.html" class="btn read-more">Read More</a>
+                    <a href="single.php" class="btn read-more">Read More</a>
                 </div>
             </div>
         </div>
@@ -264,6 +267,6 @@
 <!--Slick Carousel-->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>	
 <!--Custom Script-->
-    <script src="script.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html> 

@@ -1,3 +1,4 @@
+<?php include("../../controller/topic.php"); ?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -44,29 +45,38 @@
     <!--left sidebar-->
     <div class="left-sidebar">
         <ul>
-            <li><a href="../posts/index.html">Manage Posts</a></li>
-            <li><a href="index.html">Manage Topics</a></li>
+            <li><a href="../posts/index.php">Manage Posts</a></li>
+            <li><a href="index.php">Manage Topics</a></li>
         </ul>
     </div>
     <!--//left sidebar-->
     <!--admin content-->
     <div class="admin-content">
         <div class="button-group">
-            <a href="create-topics.html" class="btn btn-big">Add Topic</a>
-            <a href="index.html" class="btn btn-big">Manage Topics</a>
+            <a href="index.php" class="btn btn-big">Manage Topics</a>
             <div class="content">
-                <h2 class="page-title">Manage Topics</h2>
-               <form action="create-topics.html" method="post">
-                <label>Name</label>
-                <input type="text" name="name" class="text-input">
+                <h2 class="page-title">Edit Topic</h2>
+
+                <?php if (count($errors) > 0): ?>
+                    <div class="error">
+                        <?php foreach ($errors as $error): ?>
+                            <li><?php echo $error; ?></li>
+                        <?php endforeach; ?>
+                    </div>
+                <?php endif; ?>
+
+                <form action="edit.php" method="post">
+                    <input type="hidden" name="id" value="<?php echo $id; ?>">
+                    <label>Name</label>
+                    <input type="text" name="name" class="text-input" value="<?php echo $name; ?>">
                 <div>
                     <label>Description</label>
-                    <textarea name="description" id="body"></textarea>
+                    <textarea name="description" id="body"><?php echo $description; ?></textarea>
                 </div>
                 <div>
-                    <button type="submit" class="btn btn-big">Add Topic</button>
+                <button type="submit" name="update-topic" class="btn btn-big">Update Topic</button>
                 </div>
-               </form>
+                </form>
             </div>
         </div>
 

@@ -1,3 +1,5 @@
+
+<?php include("../../controller/topic.php"); ?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -42,47 +44,34 @@
     <!--left sidebar-->
     <div class="left-sidebar">
         <ul>
-            <li><a href="index.html">Manage Posts</a></li>
-            <li><a href="../topics/index.html">Manage Topics</a></li>
+            <li><a href="../posts/index.php">Manage Posts</a></li>
+            <li><a href="index.php">Manage Topics</a></li>
         </ul>
     </div>
     <!--//left sidebar-->
     <!--admin content-->
     <div class="admin-content">
         <div class="button-group">
-            <a href="create-posts.html" class="btn btn-big">Add Post</a>
-            <a href="index.html" class="btn btn-big">Manage Posts</a>
+            <a href="create-topics.php" class="btn btn-big">Add Topics</a>
+            <a href="index.php" class="btn btn-big">Manage Topics</a>
             <div class="content">
-                <h2 class="page-title">Manage Posts</h2>
+                <h2 class="page-title">Manage Topics</h2>
+
                 <table>
                     <thead>
                         <th>SN</th>
                         <th>Title</th>
-                        <th>Author</th>
                         <th colspan="3">Action</th>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>This is The first post</td>
-                            <td><a href="#" class="edit">edit</a></td>
-                            <td><a href="#" class="delete">delete</a></td>
-                            <td><a href="#" class="publish">publish</a></td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>This is The first post</td>
-                            <td><a href="#" class="edit">edit</a></td>
-                            <td><a href="#" class="delete">delete</a></td>
-                            <td><a href="#" class="publish">publish</a></td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>This is The first post</td>
-                            <td><a href="#" class="edit">edit</a></td>
-                            <td><a href="#" class="delete">delete</a></td>
-                            <td><a href="#" class="publish">publish</a></td>
-                        </tr>
+                        <?php foreach ($topics as $key => $topic): ?>
+                            <tr>
+                                <td><?php echo $key + 1; ?></td>
+                                <td><?php echo $topic['name']; ?></td>
+                                <td><a href="edit.php?edit_id=<?php echo $topic['id']; ?>" class="edit">edit</a></td>
+                                <td><a href="index.php?delete_id=<?php echo $topic['id']; ?>" class="delete">delete</a></td>
+                            </tr>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>
@@ -90,8 +79,6 @@
 
     </div>
     <!--//admin content-->
-    
-    
 </div>
 <!--Page wrapper-->
 

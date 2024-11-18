@@ -1,3 +1,6 @@
+
+<?php include("../../controller/topic.php"); ?>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -44,44 +47,38 @@
     <!--left sidebar-->
     <div class="left-sidebar">
         <ul>
-            <li><a href="index.html">Manage Posts</a></li>
-            <li><a href="../topics/index.html">Manage Topics</a></li>
+            <li><a href="../posts/index.php">Manage Posts</a></li>
+            <li><a href="index.php">Manage Topics</a></li>
         </ul>
     </div>
     <!--//left sidebar-->
     <!--admin content-->
     <div class="admin-content">
         <div class="button-group">
-            <a href="create-posts.html" class="btn btn-big">Add Post</a>
-            <a href="index.html" class="btn btn-big">Manage Posts</a>
+            <a href="create-topics.php" class="btn btn-big">Add Topic</a>
+            <a href="index.php" class="btn btn-big">Manage Topics</a>
             <div class="content">
-                <h2 class="page-title">Manage Posts</h2>
-               <form action="create-posts.html" method="post">
-                <label>Title</label>
-                <input type="text" name="title" class="text-input">
-                <div>
-                    <label>Body</label>
-                    <textarea name="body" id="body"></textarea>
-                </div>
-                <div>
-                    <label>Image</label>
-                    <input type="file" name="image" class="text-input">
-                </div>
-                <div>
-                    <label>Topic</label>
-                    <select name="Topic" class="text-input">
-                        <option value="Topic 1">Topic 1</option>
-                        <option value="Topic 2">Topic 2</option>
-                        <option value="Topic 3">Topic 3</option>
-                        <option value="Topic 4">Topic 4</option>
-                        <option value="Topic 5">Topic 5</option>
-                    </select>
-                </div>
-                <div>
-                    <button type="submit" class="btn btn-big">Add Post</button>
-                </div>
-               </form>
+                <h2 class="page-title">Add Topic</h2>
+                <?php if (count($errors) > 0): ?>
+                    <div class="error">
+                         <?php foreach ($errors as $error): ?>
+                            <li><?php echo $error; ?></li>
+                        <?php endforeach; ?>
+                    </div>
+                <?php endif; ?>
+                <form action="create-topics.php" method="post">
+                    <label>Name</label>
+                     <input type="text" name="name" class="text-input" value="<?php echo $name; ?>">
+                    <div>
+                        <label>Description</label>
+                        <textarea name="description" id="body"><?php echo $description; ?></textarea>
+                    </div>
+                    <div>
+                        <button type="submit" name="add-topic" class="btn btn-big">Add Topic</button>
+                    </div>
+                </form>
             </div>
+
         </div>
 
     </div>
