@@ -1,3 +1,8 @@
+<?php 
+require('action/user/securityAction.php'); 
+require('action/question/publishQuestionAction.php');
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <?php include 'includes/head.php';?>
