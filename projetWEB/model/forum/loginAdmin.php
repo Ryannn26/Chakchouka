@@ -1,4 +1,4 @@
-<?php require('action/user/loginAction.php'); ?>
+<?php require('action/admin/loginAdminAction.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 <?php include 'includes/head.php';?>
@@ -7,7 +7,7 @@
 <form class="container" method="POST">
   <?php
   if(isset($errorMsg)){echo '<p>'.$errorMsg.'</p>';} ?>
-  <h4>connectez vous en tant qu'utilisateur</h4>
+  <h3>connectez vous en tant qu'administrateur</h3>
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Pseudo</label>
     <input type="text" class="form-control" name="pseudo">
@@ -19,7 +19,6 @@
   <button type="submit" class="btn btn-primary" name="validate">se connecter</button>
 </form>
 <br>
-<a href="singup.php"><p>je n'ai pas du compte,je m'inscris</p></a>
-<a href="loginAdmin.php"><p>connectez vous en tant qu'administrateur </p></a>
+<a href="login.php"><p>connectez vous en tant qu' utilisateur </p></a>
 </body>
 </html>
