@@ -15,3 +15,4 @@
 1.Connexion_En_tant_que_admin
 2.Afficher les question
 3.suprimer les question
+4.Afficher tous les réponse pour chaque question
