@@ -1,3 +1,4 @@
+<?php include("../../../controller/posts.php"); ?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,8 +7,8 @@
     <!--Font awesome-->
     <script src="https://kit.fontawesome.com/534045aa55.js" crossorigin="anonymous"></script>
     <!--custom stylinf css file-->
-    <link rel="stylesheet" href="../../css/style.css">
-    <link rel="stylesheet" href="../../css/admin.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/admin.css">
     <!--CKeditor-->
     <link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5/43.3.1/ckeditor5.css">
     <!--Google fonts-->
@@ -15,12 +16,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,421;1,421&display=swap" rel="stylesheet">
 </head>
-<body>
     <header>
         <div class="logo">
-            <h1 class="logo-text">
+            <a href="../../index.php">
+                <h1 class="logo-text" >
                 <span>Chak</span>chouka
-            </h1>
+                </h1>
+            </a>
         </div>
         <i class="fa fa-bars menu-toggle"></i>
         <ul class="nav">
@@ -31,7 +33,6 @@
                     Mohamed Ben Saker
                     <i class="fa fa-chevron-down" style="font-size: .8em;"></i>
                 </a>
-                    
                 <ul>
                     
                     <li><a href="#" class="logout">Logout</a></li>
@@ -56,30 +57,43 @@
             <a href="index.php" class="btn btn-big">Manage Posts</a>
             <div class="content">
                 <h2 class="page-title">Manage Posts</h2>
-               <form action="create-posts.html" method="post">
-                <label>Title</label>
-                <input type="text" name="title" class="text-input">
+                <?php if (count($errors) > 0): ?>
+                    <div class="error">
+                        <?php foreach ($errors as $error): ?>
+                            <li><?php echo $error; ?></li>
+                        <?php endforeach; ?>
+                    </div>
+                <?php endif; ?>
+                <form action="edit.php" method="post" enctype="multipart/form-data" >
+                    <label>Title</label>
+                    <input type="text" name="title" class="text-input" value="<?php echo $title; ?>">
+                    <div>
+                        <label>Body</label>
+                        <textarea name="body" id="body"><?php echo $body; ?></textarea>
+                    </div>
+                    <div>
+                        <label>Image</label>
+                        <input type="file" name="image" class="text-input" value="<?php echo $image; ?>">
+                    </div>
+                    <br>
+                    <div>
+                        <label>Topic</label>
+                            <select name="topic_id" class="text-input">
+                                <option value="">-- Select Topic --</option>
+                                <?php foreach ($topics as $topic): ?>
+                                    <option value="<?php echo $topic['id'];?>" 
+                                    <?php echo isset($topic_id) && $topic_id == $topic['id'] ? 'selected' : ''; ?>>
+                                    <?php echo $topic['name']; ?>
+                                    </option>
+                                <?php endforeach; ?>
+                            </select>
+                    </div>
+                    <br>
                 <div>
-                    <label>Body</label>
-                    <textarea name="body" id="body"></textarea>
-                </div>
-                <div>
-                    <label>Image</label>
-                    <input type="file" name="image" class="text-input">
-                </div>
-                <div>
-                    <label>Topic</label>
-                    <select name="Topic" class="text-input">
-                        <option value="Topic 1">Topic 1</option>
-                        <option value="Topic 2">Topic 2</option>
-                        <option value="Topic 3">Topic 3</option>
-                        <option value="Topic 4">Topic 4</option>
-                        <option value="Topic 5">Topic 5</option>
-                    </select>
-                </div>
-                <div>
-                    <button type="submit" class="btn btn-big">Add Post</button>
-                </div>
+                    <button type="submit" name="edit-post" class="btn btn-big">Update-Post</button>
+                </di>
+                <br>
+                
                </form>
             </div>
         </div>
@@ -88,6 +102,7 @@
     <!--//admin content-->
 </div>
 <!--Page wrapper-->
+</body>
 <!--CK Editor script -->
 <script type="importmap">
     {
@@ -127,5 +142,4 @@
     <script src="https://cdn.ckeditor.com/ckeditor5/43.3.1/classic/ckeditor.js"></script>
 <!--Custom Script-->
     <script src="../../js/script.js"></script>
-</body>
 </html> 

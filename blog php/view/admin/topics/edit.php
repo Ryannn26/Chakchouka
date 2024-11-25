@@ -1,6 +1,4 @@
-
-<?php include("../../controller/topic.php"); ?>
-
+<?php include("../../../controller/topic.php"); ?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -9,8 +7,8 @@
     <!--Font awesome-->
     <script src="https://kit.fontawesome.com/534045aa55.js" crossorigin="anonymous"></script>
     <!--custom stylinf css file-->
-    <link rel="stylesheet" href="../../css/style.css">
-    <link rel="stylesheet" href="../../css/admin.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/admin.css">
     <!--CKeditor-->
     <link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5/43.3.1/ckeditor5.css">
     <!--Google fonts-->
@@ -21,9 +19,11 @@
 <body>
     <header>
         <div class="logo">
-            <h1 class="logo-text">
+            <a href="../../index.php">
+                <h1 class="logo-text" >
                 <span>Chak</span>chouka
-            </h1>
+                </h1>
+            </a>
         </div>
         <i class="fa fa-bars menu-toggle"></i>
         <ul class="nav">
@@ -55,32 +55,32 @@
     <!--admin content-->
     <div class="admin-content">
         <div class="button-group">
-            <a href="create-topics.php" class="btn btn-big">Add Topic</a>
             <a href="index.php" class="btn btn-big">Manage Topics</a>
             <div class="content">
-                <h2 class="page-title">Add Topic</h2>
+                <h2 class="page-title">Edit Topic</h2>
+
                 <?php if (count($errors) > 0): ?>
                     <div class="error">
-                         <?php foreach ($errors as $error): ?>
+                        <?php foreach ($errors as $error): ?>
                             <li><?php echo $error; ?></li>
                         <?php endforeach; ?>
                     </div>
                 <?php endif; ?>
-                <form action="create-topics.php" method="post">
+
+                <form action="edit.php" method="post">
+                    <input type="hidden" name="id" value="<?php echo $id; ?>">
                     <label>Name</label>
-                     <input type="text" name="name" class="text-input" value="<?php echo $name; ?>">
-                    <div>
-                        <label>Description</label>
-                        <textarea name="description" id="body"><?php echo $description; ?></textarea>
-                    </div>
-                    <div>
-                        <button type="submit" name="add-topic" class="btn btn-big">Add Topic</button>
-                    </div>
+                    <input type="text" name="name" class="text-input" value="<?php echo $name; ?>">
+                <div>
+                    <label>Description</label>
+                    <textarea name="description" id="body"><?php echo $description; ?></textarea>
+                </div>
+                <div>
+                <button type="submit" name="update-topic" class="btn btn-big">Update Topic</button>
+                </div>
                 </form>
             </div>
-
         </div>
-
     </div>
     <!--//admin content-->
 </div>

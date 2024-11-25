@@ -6,7 +6,7 @@
     <!--Font awesome-->
     <script src="https://kit.fontawesome.com/534045aa55.js" crossorigin="anonymous"></script>
     <!--custom stylinf css file-->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../view/assets/css/style.css">
     <!--Google fonts-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -74,23 +74,23 @@
             <div class="section popular">
                 <h2 class="section-title">Popular </h2>
                 <div class="post clearfix">
-                    <img src="imgs/images.jpg" alt="">
+                    <img src="assets/imgs/images.jpg" alt="">
                     <a href=""><h4>How To Start Food Blog</h4></a>
                 </div>
                 <div class="post clearfix">
-                    <img src="imgs/images.jpg" alt="">
+                    <img src="assets/imgs/images.jpg" alt="">
                     <a href=""><h4>How To Start Food Blog</h4> </a>
                 </div>
                 <div class="post clearfix">
-                    <img src="imgs/images.jpg" alt="">
+                    <img src="assets/imgs/images.jpg" alt="">
                     <a href=""><h4>How To Start Food Blog</h4> </a>
                 </div>
                 <div class="post clearfix">
-                    <img src="imgs/images.jpg" alt="">
+                    <img src="assets/imgs/images.jpg" alt="">
                     <a href=""><h4>How To Start Food Blog</h4> </a>
                 </div>
                 <div class="post clearfix">
-                    <img src="imgs/images.jpg" alt="">
+                    <img src="assets/imgs/images.jpg" alt="">
                     <a href=""><h4>How To Start Food Blog</h4> </a>
                 </div>
             </div>
@@ -172,6 +172,6 @@
 <!--Slick Carousel-->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>	
 <!--Custom Script-->
-    <script src="script.js"></script>
+    <script src="assets/js/script.js"></script>
 </body>
 </html> 
