@@ -74,6 +74,7 @@
                         <label>Description</label>
                         <textarea name="description" id="body"><?php echo $description; ?></textarea>
                     </div>
+                    <br>
                     <div>
                         <button type="submit" name="add-topic" class="btn btn-big">Add Topic</button>
                     </div>

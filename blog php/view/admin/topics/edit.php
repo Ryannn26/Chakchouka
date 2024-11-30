@@ -66,7 +66,6 @@
                         <?php endforeach; ?>
                     </div>
                 <?php endif; ?>
-
                 <form action="edit.php" method="post">
                     <input type="hidden" name="id" value="<?php echo $id; ?>">
                     <label>Name</label>

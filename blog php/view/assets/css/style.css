@@ -1,5 +1,6 @@
 * {
     box-sizing: border-box;
+    scroll-behavior: auto;
 }
 html,
 body {
@@ -7,7 +8,6 @@ body {
     margin:0px;
     background-color: #f6f6f6;
     font-family: "Work Sans",serif;
-
 }
 h1,h2,h3,h4,h5{
     font-family: "Work  Sans",serif;

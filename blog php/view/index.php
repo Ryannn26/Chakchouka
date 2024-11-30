@@ -1,4 +1,4 @@
-
+<?php include("../controller/posts.php"); ?>
 <?php include("../controller/topic.php"); ?>
 <html lang="en">
 <head>
@@ -52,66 +52,21 @@
         <i class="fas fa-chevron-left prev"></i>       
         <i class="fas fa-chevron-right next"></i>
         <div class="post-wrapper">
-            <div class="post">
-                <img class="slider-image" src="assets/imgs/images.jpg" alt="Food Blog">
-                <div class="post-info">
-                    <h4><a href="single.html">Tasting New Food will change your life </a></h4>
-                    <i class="far fa-user"> Food Blog 
-                    </i>
-                    &nbsp;
-                    <i class="far fa-calendar"> Mar 8, 2024</i>
-                </div>
-            </div>
-            <div class="post">
-                <img class="slider-image" src="assets/imgs/images.jpg" alt="Food Blog">
-                <div class="post-info">
-                    <h4><a href="single.php">Tasting New Food will change your life </a></h4>
-                    <i class="far fa-user"> Food Blog 
-                    </i>
-                    &nbsp;
-                    <i class="far fa-calendar"> Mar 8, 2024</i>
-                </div>
-            </div>
-            <div class="post">
-                <img class="slider-image" src="assets/imgs/images.jpg" alt="Food Blog">
-                <div class="post-info">
-                    <h4><a href="single.php">Tasting New Food will change your life </a></h4>
-                    <i class="far fa-user"> Food Blog 
-                    </i>
-                    &nbsp;
-                    <i class="far fa-calendar"> Mar 8, 2024</i>
-                </div>
-            </div>
-            <div class="post">
-                <img class="slider-image" src="assets/imgs/images.jpg" alt="Food Blog">
-                <div class="post-info">
-                    <h4><a href="single.php">Tasting New Food will change your life </a></h4>
-                    <i class="far fa-user"> Food Blog 
-                    </i>
-                    &nbsp;
-                    <i class="far fa-calendar"> Mar 8, 2024</i>
-                </div>
-            </div>
-            <div class="post">
-                <img class="slider-image" src="assets/imgs/images.jpg" alt="Food Blog">
-                <div class="post-info">
-                    <h4><a href="single.php">Tasting New Food will change your life </a></h4>
-                    <i class="far fa-user"> Food Blog 
-                    </i>
-                    &nbsp;
-                    <i class="far fa-calendar"> Mar 8, 2024</i>
-                </div>
-            </div>
-            <div class="post">
-                <img class="slider-image" src="assets/imgs/images.jpg" alt="Food Blog">
-                <div class="post-info">
-                    <h4><a href="single.php">Tasting New Food will change your life </a></h4>
-                    <i class="far fa-user"> Food Blog 
-                    </i>
-                    &nbsp;
-                    <i class="far fa-calendar"> Mar 8, 2024</i>
-                </div>
-            </div>
+            <?php foreach ($posts as $key => $post):?>
+                <?php if ($post['published']) {?>
+                    <div class="post">
+                        <img class="slider-image" src="assets/imgs/images.jpg" alt="Food Blog">
+                        <div class="post-info">
+                            <h4><a href="single.php?id=<?php echo $post['id']; ?>"><?php echo $post['title']?></a></h4>
+                            <i class="far fa-user"> Food Blog 
+                            </i>
+                            &nbsp;
+                            <i class="far fa-calendar"> <?php echo date('F j ,Y', strtotime($post['created_at']));
+                            ?></i>
+                        </div>
+                    </div>
+                <?php }?>
+            <?php endforeach ?>
         </div>
     </div>
     <!--//POST SLIDER -->
@@ -120,73 +75,28 @@
         <!--main content-->
         <div class="main-content">
             <h1 class="recent-post-title">Recent Posts</h1>
-
-            <div class="post">
-                <img src="assets/imgs/images.jpg" alt="" class="post-image">
-                <div class="post-preview">
-                    <h2><a href="single.html">The strongest and sweetest yet remain to be sung </a></h2>
-                    <i class="far fa-user"> Mohamed Ben Saker</i>
-                    &nbsp;
-                    <i class="far calendar"> Mar 11, 2024</i>
-                    <p class="preview-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem inventore id harum quo nostrum animi nisi maiores ex corporis dolor sed quae in omnis ducimus, eligendi error, voluptatibus qui minus.
-                    </p>
-                    <a href="single.php" class="btn read-more">Read More</a>
-                </div>
-            </div>
-            <div class="post">
-                <img src="assets/imgs/images.jpg" alt="" class="post-image">
-                <div class="post-preview">
-                    <h2><a href="single.php">The strongest and sweetest yet remain to be sung </a></h2>
-                    <i class="far fa-user"> Mohamed Ben Saker</i>
-                    &nbsp;
-                    <i class="far calendar"> Mar 11, 2024</i>
-                    <p class="preview-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem inventore id harum quo nostrum animi nisi maiores ex corporis dolor sed quae in omnis ducimus, eligendi error, voluptatibus qui minus.
-                    </p>
-                    <a href="single.php" class="btn read-more">Read More</a>
-                </div>
-            </div>
-            <div class="post">
-                <img src="assets/imgs/images.jpg" alt="" class="post-image">
-                <div class="post-preview">
-                    <h2><a href="single.php">The strongest and sweetest yet remain to be sung </a></h2>
-                    <i class="far fa-user"> Mohamed Ben Saker</i>
-                    &nbsp;
-                    <i class="far calendar"> Mar 11, 2024</i>
-                    <p class="preview-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem inventore id harum quo nostrum animi nisi maiores ex corporis dolor sed quae in omnis ducimus, eligendi error, voluptatibus qui minus.
-                    </p>
-                    <a href="single.php" class="btn read-more">Read More</a>
-                </div>
-            </div>
-            <div class="post">
-                <img src="assets/imgs/images.jpg" alt="" class="post-image">
-                <div class="post-preview">
-                    <h2><a href="single.php">The strongest and sweetest yet remain to be sung </a></h2>
-                    <i class="far fa-user"> Mohamed Ben Saker</i>
-                    &nbsp;
-                    <i class="far calendar"> Mar 11, 2024</i>
-                    <p class="preview-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem inventore id harum quo nostrum animi nisi maiores ex corporis dolor sed quae in omnis ducimus, eligendi error, voluptatibus qui minus.
-                    </p>
-                    <a href="single.php" class="btn read-more">Read More</a>
-                </div>
-            </div>
-            <div class="post">
-                <img src="assets/imgs/images.jpg" alt="" class="post-image">
-                <div class="post-preview">
-                    <h2><a href="single.php">The strongest and sweetest yet remain to be sung </a></h2>
-                    <i class="far fa-user"> Mohamed Ben Saker</i>
-                    &nbsp;
-                    <i class="far calendar"> Mar 11, 2024</i>
-                    <p class="preview-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem inventore id harum quo nostrum animi nisi maiores ex corporis dolor sed quae in omnis ducimus, eligendi error, voluptatibus qui minus.
-                    </p>
-                    <a href="single.php" class="btn read-more">Read More</a>
-                </div>
-            </div>
+            <?php foreach ($posts as $key => $post):?>
+                <?php if ($post['published']) {?>
+                    <div class="post">
+                        <img src="assets/imgs/images.jpg" alt="" class="post-image">
+                        <div class="post-preview">
+                            <h2><a href="single.php?id=<?php echo $post['id']; ?>"><?php echo $post['title'] ?></a></h2>
+                            <i class="far fa-user"> Mohamed Ben Saker</i>
+                            &nbsp;
+                            <i class="far fa-calendar"> <?php echo date('F j ,Y', strtotime($post['created_at']));?></i>
+                            <p class="preview-text"><?php echo  substr($post['body'],0,150) . '...'?>
+                            </p>
+                         <a href="single.php?id=<?php echo $post['id']; ?>" class="btn read-more">Read More</a>
+                        </div>
+                    </div>
+                <?php }?>
+            <?php endforeach ?>
         </div>
         <!--Main content-->
         <div class="sidebar">
             <div class="section search">
                 <h2 class="section-title">Search</h2>
-                <form action="index.html" method="post">
+                <form action="index.php" method="post">
                     <input type="text" name="search-term" class="text-input" placeholder="Search...">
                 </form>
             </div>

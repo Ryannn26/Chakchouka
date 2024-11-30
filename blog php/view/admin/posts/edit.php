@@ -65,6 +65,7 @@
                     </div>
                 <?php endif; ?>
                 <form action="edit.php" method="post" enctype="multipart/form-data" >
+                    <input type="hidden" name="id" value="<?php echo $id; ?>">
                     <label>Title</label>
                     <input type="text" name="title" class="text-input" value="<?php echo $title; ?>">
                     <div>

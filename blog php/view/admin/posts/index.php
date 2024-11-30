@@ -85,7 +85,11 @@
                                 <td><?php echo $post['created_at']; ?></td>
                                 <td><a href="edit.php?edit_id=<?php echo $post['id']; ?>" class="edit">edit</a></td>
                                 <td><a href="index.php?delete_id=<?php echo $post['id']; ?>" class="delete">delete</a></td>
-                                <td><a href="#" class="publish">publish</a></td>
+                                <?php if ($post['published']){?>
+                                    <td><a href="index.php?Unpublish_id=<?php echo $post['id']; ?>"  class="Unpublish">Unpublish</a></td>
+                                <?php } else {?>
+                                    <td><a href="index.php?publish_id=<?php echo $post['id']; ?>"  class="publish" >publish</a></td>
+                                <?php }?>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>

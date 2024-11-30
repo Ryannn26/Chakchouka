@@ -54,10 +54,12 @@ th,td{
 .publish{
     color: blue;
 }
-.edit:hover,.delete:hover,.publish:hover{
+.edit:hover,.delete:hover,.publish:hover,.Unpublish:hover{
     text-decoration: underline;
 }
 form div{
     margin: bottom 15px; ;
 }
-
+.Unpublish{
+    color: dark black;
+}

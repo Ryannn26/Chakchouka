@@ -1,8 +1,24 @@
+<?php include("../controller/posts.php"); ?>
+<?php include("../controller/topic.php"); 
+$published="";
+//single post 
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+    $stmt = $conn->prepare("SELECT * FROM posts WHERE id = :id");
+    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+    $stmt->execute();
+    $post = $stmt->fetch(PDO::FETCH_ASSOC);
+}
+    $stmt = $conn->prepare("SELECT * FROM posts WHERE published = :published");
+    $stmt->bindParam(':published', $published, PDO::PARAM_INT);
+    $stmt->execute();
+    $p = $stmt->fetch(PDO::FETCH_ASSOC);
+?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Single Post</title>
+    <title></title>
     <!--Font awesome-->
     <script src="https://kit.fontawesome.com/534045aa55.js" crossorigin="anonymous"></script>
     <!--custom stylinf css file-->
@@ -34,9 +50,8 @@
                     Mohamed Ben Saker
                     <i class="fa fa-chevron-down" style="font-size: .8em;"></i>
                 </a>
-                    
                 <ul>
-                    <li><a href="#">Dashboard</a></li>
+                    <li><a href="admin/posts/index.php">Dashboard</a></li>
                     <li><a href="#" class="logout">Logout</a></li>
                 </ul>
             </li>
@@ -49,59 +64,33 @@
 
         <!--main content-->
         <div class="main-content single">
-            <h1 class="post-title">This is the Title of the post </h1>
+            <h1 class="post-title"><?php echo $post['title']?></h1>
             <div class="popst-content">
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repudiandae consectetur temporibus id vel sapiente ipsa doloribus sit quod? Odit nesciunt fugiat reiciendis officiis a exercitationem eligendi, commodi minima nemo veniam.</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi magni odio architecto, repellendus enim officia exercitationem alias nihil fugiat molestiae. Nostrum quos vel dolore tenetur ipsum incidunt sunt dolor quibusdam.</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi magni odio architecto, repellendus enim officia exercitationem alias nihil fugiat molestiae. Nostrum quos vel dolore tenetur ipsum incidunt sunt dolor quibusdam.</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi magni odio architecto, repellendus enim officia exercitationem alias nihil fugiat molestiae. Nostrum quos vel dolore tenetur ipsum incidunt sunt dolor quibusdam.</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi magni odio architecto, repellendus enim officia exercitationem alias nihil fugiat molestiae. Nostrum quos vel dolore tenetur ipsum incidunt sunt dolor quibusdam.</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi magni odio architecto, repellendus enim officia exercitationem alias nihil fugiat molestiae. Nostrum quos vel dolore tenetur ipsum incidunt sunt dolor quibusdam.</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi magni odio architecto, repellendus enim officia exercitationem alias nihil fugiat molestiae. Nostrum quos vel dolore tenetur ipsum incidunt sunt dolor quibusdam.</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi magni odio architecto, repellendus enim officia exercitationem alias nihil fugiat molestiae. Nostrum quos vel dolore tenetur ipsum incidunt sunt dolor quibusdam.</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi magni odio architecto, repellendus enim officia exercitationem alias nihil fugiat molestiae. Nostrum quos vel dolore tenetur ipsum incidunt sunt dolor quibusdam.</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi magni odio architecto, repellendus enim officia exercitationem alias nihil fugiat molestiae. Nostrum quos vel dolore tenetur ipsum incidunt sunt dolor quibusdam.</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi magni odio architecto, repellendus enim officia exercitationem alias nihil fugiat molestiae. Nostrum quos vel dolore tenetur ipsum incidunt sunt dolor quibusdam.</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi magni odio architecto, repellendus enim officia exercitationem alias nihil fugiat molestiae. Nostrum quos vel dolore tenetur ipsum incidunt sunt dolor quibusdam.</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi magni odio architecto, repellendus enim officia exercitationem alias nihil fugiat molestiae. Nostrum quos vel dolore tenetur ipsum incidunt sunt dolor quibusdam.</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi magni odio architecto, repellendus enim officia exercitationem alias nihil fugiat molestiae. Nostrum quos vel dolore tenetur ipsum incidunt sunt dolor quibusdam.</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi magni odio architecto, repellendus enim officia exercitationem alias nihil fugiat molestiae. Nostrum quos vel dolore tenetur ipsum incidunt sunt dolor quibusdam.</p>
+                <p>
+                    <?php echo $post['body']?> 
+                </p>
             </div>
         </div>
         <!--//Main content-->
         <!--sidebar-->
         <div class="sidebar single">
-            <div class="section popular">
-                <h2 class="section-title">Popular </h2>
-                <div class="post clearfix">
-                    <img src="assets/imgs/images.jpg" alt="">
-                    <a href=""><h4>How To Start Food Blog</h4></a>
-                </div>
-                <div class="post clearfix">
-                    <img src="assets/imgs/images.jpg" alt="">
-                    <a href=""><h4>How To Start Food Blog</h4> </a>
-                </div>
-                <div class="post clearfix">
-                    <img src="assets/imgs/images.jpg" alt="">
-                    <a href=""><h4>How To Start Food Blog</h4> </a>
-                </div>
-                <div class="post clearfix">
-                    <img src="assets/imgs/images.jpg" alt="">
-                    <a href=""><h4>How To Start Food Blog</h4> </a>
-                </div>
-                <div class="post clearfix">
-                    <img src="assets/imgs/images.jpg" alt="">
-                    <a href=""><h4>How To Start Food Blog</h4> </a>
-                </div>
-            </div>
+                    <div class="section popular">
+                        <h2 class="section-title">Popular</h2>
+                        <?php foreach ($posts as $key => $p):?>
+                            <?php if ($p['published']) { ?>
+                                <div class="post clearfix">
+                                    <img src="assets/imgs/images.jpg" alt="">
+                                    <a href="single.php?id=<?php echo $p['id']; ?>"><h4><?php echo $p['title'] ?></h4></a>
+                                </div>
+                            <?php } ?>
+                        <?php endforeach ?>
+                    </div>
             <div class="section topics">
                 <h2 class="section-title">Topics</h2>
                 <ul>
-                    <li><a href="#">Topic 1</a></li>
-                    <li><a href="#">Topic 2</a></li>
-                    <li><a href="#">Topic 3</a></li>
-                    <li><a href="#">Topic 4</a></li>
-                    <li><a href="#">Topic 5</a></li>
+                    <?php foreach ($topics as $key => $topic) : ?>
+                        <li><a href="#"><?php echo $topic['name']?></a></li>
+                    <?php endforeach ?>
                 </ul>
             </div>
         </div>
