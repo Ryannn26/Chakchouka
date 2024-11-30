@@ -8,6 +8,7 @@ require('action/question/deleteAnswersAction.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
+<link rel="stylesheet" href="style_formulaire_question.css">
 <?php include ('includes/head.php');?>
 <body>
     <?php include ('includes/navbar.php'); ?>
@@ -32,6 +33,7 @@ require('action/question/deleteAnswersAction.php');
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="from-label" >Réponse:</label>
                     <textarea name="answer" class="form-control"></textarea>
+                    <small id="errorAnswer" class="text-danger" style="display: none;">Veuillez entrer une réponse.</small>
                     <br>
                     <button class="btn btn-primary" type="submit" name="validate">Répondre à la question</button>
                 </div>
@@ -54,6 +56,7 @@ require('action/question/deleteAnswersAction.php');
                                 <button type="submit" name="supprimer" class="btn btn-danger">
                                     Supprimer
                                 </button>
+                                
                             </form>
                         </div>
                         <br>
@@ -67,5 +70,6 @@ require('action/question/deleteAnswersAction.php');
         }   
     ?>
     </div>
+    <script src="../../controller/js/validation.js"></script>
 </body>
 </html>

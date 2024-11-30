@@ -5,6 +5,7 @@ require('action/question/editQuestioAction.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
+<link rel="stylesheet" href="style_formulaire_question.css">
 <?php include 'includes/head.php';?>
 <body>
 <?php include 'includes/navbar.php';?>

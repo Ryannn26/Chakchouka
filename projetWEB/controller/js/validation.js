@@ -58,3 +58,19 @@ function validateForm() {
     // Empêche la soumission si une validation échoue
     return isTitleValid && isDescriptionValid && isContentValid;
 }
+document.addEventListener('DOMContentLoaded', function () {
+    const form = document.getElementById('answerForm'); // Formulaire
+    const answerInput = document.getElementById('answer'); // Champ de texte
+    const errorAnswer = document.getElementById('errorAnswer'); // Message d'erreur
+
+    // Écoute de l'événement de soumission
+    form.addEventListener('submit', function (event) {
+        if (answerInput.value.trim() === "") {
+            event.preventDefault(); // Bloque l'envoi du formulaire
+            errorAnswer.style.display = "block"; // Affiche le message d'erreur
+            answerInput.focus(); // Met le focus sur le champ
+        } else {
+            errorAnswer.style.display = "none"; // Cache le message d'erreur
+        }
+    });
+});
