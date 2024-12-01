@@ -58,6 +58,7 @@ require('action/question/showAllQuestionsAction.php');
         ?>
 
     </div>
+    <script src="../../controller/js/searchValidation.js"></script>
 
 
 </body>

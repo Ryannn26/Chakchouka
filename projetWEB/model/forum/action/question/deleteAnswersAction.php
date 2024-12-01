@@ -26,3 +26,21 @@ if (isset($_POST['supprimer'])) {
         echo "Aucune réponse n'a été spécifiée.";
     }
 }
+if (isset($_POST['update_answer'])) {
+    $answer_id = intval($_POST['answer_id']);
+    $new_answer = htmlspecialchars($_POST['new_answer']);
+
+    if (!empty($new_answer)) {
+        // Mettre à jour la réponse dans la base de données
+        $query = $bdd->prepare('UPDATE answers SET contenu = ? WHERE id = ?');
+        $result = $query->execute([$new_answer, $answer_id]);
+
+        if ($result) {
+            echo '<div class="alert alert-success">La réponse a été mise à jour avec succès.</div>';
+        } else {
+            echo '<div class="alert alert-danger">Erreur lors de la mise à jour de la réponse.</div>';
+        }
+    } else {
+        echo '<div class="alert alert-danger">Veuillez entrer un texte valide.</div>';
+    }
+}

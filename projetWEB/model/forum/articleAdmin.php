@@ -4,10 +4,11 @@ session_start();
 require('action/question/showArticleContentAction.php');
 require('action/question/postAnswerAction.php');
 require('action/question/showAllAnswersAction.php');
-require('action/question/deleteAnswersAction.php');
+require('action/question/deleteAnswersAdminAction.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
+<link rel="stylesheet" href="style_formulaire_question.css">
 <?php include ('includes/head.php');?>
 <body>
     <?php include ('includes/navbarAdmin.php'); ?>

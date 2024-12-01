@@ -5,7 +5,6 @@ require('action/question/showArticleContentAction.php');
 require('action/question/postAnswerAction.php');
 require('action/question/showAllAnswersAction.php');
 require('action/question/deleteAnswersAction.php');
-//require('action/question/editAnswersAction.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -56,9 +55,33 @@ require('action/question/deleteAnswersAction.php');
                                     <input type="hidden" name="id" value="<?= htmlspecialchars($answer['id']); ?>">
                                     <?php if ($_SESSION['id'] == $answer['id_auteur'] || $_SESSION['id'] == $question_id_auteur) { ?>
                                         <button type="submit" name="supprimer" class="btn btn-danger">Supprimer</button>
-                                        <button type="submit" name="modifier" class="btn btn-warning">Modifier</button>
+                                        <input type="hidden" name="answer_id" value="<?= htmlspecialchars($answer['id']); ?>">
+                                        <button type="submit" name="edit" class="btn btn-warning">Modifier</button>
                                     <?php } ?>
                                 </form>
+                                <?php
+                                if (isset($_POST['edit'])) {
+                                    $answer_id = intval($_POST['answer_id']); // Récupérer l'ID de la réponse à modifier
+
+                                    // Récupérer la réponse depuis la base de données
+                                    $query = $bdd->prepare('SELECT contenu FROM answers WHERE id = ?');
+                                    $query->execute([$answer_id]);
+                                    $answerData = $query->fetch();
+
+                                    if ($answerData) { ?>
+                                        <form method="POST">
+                                            <input type="hidden" name="answer_id" value="<?= htmlspecialchars($answer_id); ?>">
+                                            <div class="mb-3">
+                                                <label for="editAnswer" class="form-label">Modifier votre réponse :</label>
+                                                <textarea name="new_answer" class="form-control"><?= htmlspecialchars($answerData['contenu']); ?></textarea>
+                                            </div>
+                                            <button type="submit" name="update_answer" class="btn btn-success">Mettre à jour</button>
+                                        </form>
+                                    <?php }
+                                }
+                                ?>
+
+                                
                         </div>
                         <br>
 
