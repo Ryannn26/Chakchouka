@@ -5,6 +5,7 @@ require('action/question/showArticleContentAction.php');
 require('action/question/postAnswerAction.php');
 require('action/question/showAllAnswersAction.php');
 require('action/question/deleteAnswersAction.php');
+//require('action/question/editAnswersAction.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -50,14 +51,14 @@ require('action/question/deleteAnswersAction.php');
                                 <?= $answer['contenu'];?>
 
                                 
-                            </div>
-                            <form method="POST" >
-                                <input type="hidden" name="id" value="<?= $answer['id']; ?>">
-                                <button type="submit" name="supprimer" class="btn btn-danger">
-                                    Supprimer
-                                </button>
-                                
-                            </form>
+                                </div>
+                                <form method="POST">
+                                    <input type="hidden" name="id" value="<?= htmlspecialchars($answer['id']); ?>">
+                                    <?php if ($_SESSION['id'] == $answer['id_auteur'] || $_SESSION['id'] == $question_id_auteur) { ?>
+                                        <button type="submit" name="supprimer" class="btn btn-danger">Supprimer</button>
+                                        <button type="submit" name="modifier" class="btn btn-warning">Modifier</button>
+                                    <?php } ?>
+                                </form>
                         </div>
                         <br>
 
