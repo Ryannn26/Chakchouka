@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
     <!-- Logo / Nom de la plateforme -->
-    <a class="navbar-brand" href="#" style="font-size: 1.8rem; font-weight: bold;">chakchouka</a>
+    <a class="navbar-brand" href="#" style="font-size: 1.8rem; font-weight: bold; color: #ff9800;">chakchouka</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -16,6 +16,9 @@
         <!-- Marketplace -->
         <li class="nav-item">
           <a class="nav-link" href="marketplace.php">Marketplace</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="marketplace.php">Blog</a>
         </li>
         <!-- Forum avec sous-menu -->
         <li class="nav-item dropdown">
