@@ -18,6 +18,16 @@ require('action/question/showAllQuestionsAction.php');
     .selected {
         color: gold;
     }
+    .fa {
+        font-size: 40px;
+            cursor: pointer;
+            color: #4CAF50;
+            transition: color 0.3s ease;
+        }
+
+    .fa:hover {
+         color: #af4c4c;
+    }
 </style>
 <?php include 'includes/head.php';?>
 <body>
@@ -48,6 +58,12 @@ require('action/question/showAllQuestionsAction.php');
                     <a href="article.php?id=<?php echo $question['id']; ?>">
                         <?php echo htmlspecialchars($question['titre']); ?>
                     </a>
+                    <div><!-- Add icon library -->
+                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+                    <!-- Use an element to toggle between a like/dislike icon -->
+                    <i onclick="myFunction(this)" class="fa fa-thumbs-up"></i>
+                </div>
                 </div>
                 <div class="card-body">
                     <?php echo htmlspecialchars($question['description']); ?>
@@ -63,6 +79,8 @@ require('action/question/showAllQuestionsAction.php');
                     <i class="star" data-value="5">&#9733;</i>
                     <p>Votre note : <span class="rating-display">0</span>/5</p>
                 </div>
+
+                                    
             </div>
             <br>
         <?php
@@ -71,6 +89,9 @@ require('action/question/showAllQuestionsAction.php');
     </div>
 
     <script>
+        function myFunction(x) {
+         x.classList.toggle("fa-thumbs-down");
+        }
         document.querySelectorAll('.rating-section').forEach(section => {
             const stars = section.querySelectorAll('.star');
             const ratingDisplay = section.querySelector('.rating-display');
