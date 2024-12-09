@@ -1,31 +1,24 @@
 <?php
 session_start();
 
-// Check if the "id" parameter is present in the URL
 if (isset($_GET['id'])) {
     $food_id = $_GET['id'];
 
-    // Check if the cart is already initialized in the session
     if (!isset($_SESSION['cart'])) {
         $_SESSION['cart'] = [];
     }
 
-    // Database connection
     include 'db_connection.php';
 
     try {
-        // Fetch the food item from the database
         $stmt = $db->prepare("SELECT * FROM food WHERE id = ?");
         $stmt->execute([$food_id]);
         $food = $stmt->fetch();
 
         if ($food) {
-            // Check if the item is already in the cart
             if (isset($_SESSION['cart'][$food_id])) {
-                // Increment quantity if it exists
                 $_SESSION['cart'][$food_id]['qty'] += 1;
             } else {
-                // Add the new item to the cart
                 $_SESSION['cart'][$food_id] = [
                     'title' => $food['title'],
                     'price' => $food['price'],
@@ -48,44 +41,84 @@ if (isset($_GET['id'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Restaurant Website</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" 
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
     <!-- Navbar Section -->
-    <section class="navbar" style="background-color: #002347;">
-        <div class="container">
-            <div class="logo">
-                <a href="#" title="Logo">
-                    <h1>CHAKCHOUKA'S Market Place</h1>
-                </a>
-            </div>
-            <div class="menu text-right">
-                <ul>
-                    <li><a href="index.php">Home</a></li>
-                    <li><a href="#food-menu">Foods</a></li>
-                    <li><a href="#footer">Contact</a></li>
-                    <li><a href="view_cart.php">Panier</a></li>
-                    <li><a href="../BackOffice/food.php">Dashboard</a></li>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.php" style="font-size: 1.8rem; font-weight: bold; color:#ff9800;">Chakchouka's MarketPlace</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" 
+                    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="index.php">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#food-menu">Marketplace</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#food-menu">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="view_cart.php">Panier</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../BackOffice/food.php">Dashboard</a></li>
                 </ul>
             </div>
-            <div class="clearfix"></div>
         </div>
-    </section>
-
+    </nav>
+    
     <!-- Food Menu Section -->
     <section class="food-menu" id="food-menu">
         <div class="container">
-            <h2 class="text-center">MarketPlace</h2>
+            <!-- Search and Sort Form -->
+            <form class="d-flex" method="GET" action="index.php" style="margin-bottom: 20px;">
+                <input class="form-control me-2" type="search" name="query" placeholder="Rechercher" aria-label="Search" 
+                       value="<?= isset($_GET['query']) ? htmlspecialchars($_GET['query']) : ''; ?>">
+                <select name="sort" class="form-select me-2" style="max-width: 200px;">
+                    <option value="">Trier par</option>
+                    <option value="price_asc" <?= isset($_GET['sort']) && $_GET['sort'] == 'price_asc' ? 'selected' : ''; ?>>Prix croissant</option>
+                    <option value="price_desc" <?= isset($_GET['sort']) && $_GET['sort'] == 'price_desc' ? 'selected' : ''; ?>>Prix décroissant</option>
+                    <option value="title_asc" <?= isset($_GET['sort']) && $_GET['sort'] == 'title_asc' ? 'selected' : ''; ?>>Titre (A-Z)</option>
+                    <option value="title_desc" <?= isset($_GET['sort']) && $_GET['sort'] == 'title_desc' ? 'selected' : ''; ?>>Titre (Z-A)</option>
+                </select>
+                <button class="btn btn-outline-success" type="submit">Appliquer</button>
+                <a href="index.php" class="btn btn-secondary">Clear</a>
+            </form>
 
             <?php
-            // Database connection
             include 'db_connection.php';
 
             try {
-                // Fetch food items from the database
-                $query = $db->query("SELECT * FROM food");
-                while ($food = $query->fetch()) {
+                $query = "SELECT * FROM food";
+                $params = [];
+
+                // Add search filter if a query is provided
+                if (isset($_GET['query']) && !empty($_GET['query'])) {
+                    $query .= " WHERE title LIKE ?";
+                    $params[] = "%" . htmlspecialchars($_GET['query']) . "%";
+                }
+
+                // Add sorting logic
+                if (isset($_GET['sort'])) {
+                    if ($_GET['sort'] == 'price_asc') {
+                        $query .= " ORDER BY price ASC";
+                    } elseif ($_GET['sort'] == 'price_desc') {
+                        $query .= " ORDER BY price DESC";
+                    } elseif ($_GET['sort'] == 'title_asc') {
+                        $query .= " ORDER BY title ASC";
+                    } elseif ($_GET['sort'] == 'title_desc') {
+                        $query .= " ORDER BY title DESC";
+                    }
+                }
+
+                $stmt = $db->prepare($query);
+                $stmt->execute($params);
+
+                if ($stmt->rowCount() == 0) {
+                    echo '<p style="color: red; text-align: center;">Aucun article trouvé pour votre recherche.</p>';
+                }
+
+                while ($food = $stmt->fetch()) {
                     echo '
                         <div class="food-menu-box">
                             <div class="food-menu-img">
@@ -105,13 +138,12 @@ if (isset($_GET['id'])) {
                 echo '<p style="color: red;">Erreur : ' . $e->getMessage() . '</p>';
             }
             ?>
-
             <div class="clearfix"></div>
         </div>
     </section>
 
     <!-- Footer Section -->
-    <section class="footer" id="footer" style="background-color: #002347;">
+    <section class="footer" id="footer" style="background-color:#343a40;">
         <div class="container text-center">
             <p style="color: white;">CHAKCHOUKA</p>
             <p style="color: white;">
