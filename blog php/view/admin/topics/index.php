@@ -1,5 +1,5 @@
 
-<?php include("../../controller/topic.php"); ?>
+<?php include("../../../controller/topic.php"); ?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,8 +8,8 @@
     <!--Font awesome-->
     <script src="https://kit.fontawesome.com/534045aa55.js" crossorigin="anonymous"></script>
     <!--custom stylinf css file-->
-    <link rel="stylesheet" href="../../css/style.css">
-    <link rel="stylesheet" href="../../css/admin.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/admin.css">
     <!--Google fonts-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,9 +18,11 @@
 <body>
     <header>
         <div class="logo">
-            <h1 class="logo-text">
+            <a href="../../index.php">
+                <h1 class="logo-text" >
                 <span>Chak</span>chouka
-            </h1>
+                </h1>
+            </a>
         </div>
         <i class="fa fa-bars menu-toggle"></i>
         <ul class="nav">

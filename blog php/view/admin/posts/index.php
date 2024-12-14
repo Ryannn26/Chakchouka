@@ -1,3 +1,4 @@
+<?php include("../../../controller/posts.php"); ?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,8 +7,8 @@
     <!--Font awesome-->
     <script src="https://kit.fontawesome.com/534045aa55.js" crossorigin="anonymous"></script>
     <!--custom stylinf css file-->
-    <link rel="stylesheet" href="../../css/style.css">
-    <link rel="stylesheet" href="../../css/admin.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/admin.css">
     <!--Google fonts-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,9 +17,11 @@
 <body>
     <header>
         <div class="logo">
-            <h1 class="logo-text">
+            <a href="../../index.php">
+                <h1 class="logo-text" >
                 <span>Chak</span>chouka
-            </h1>
+                </h1>
+            </a>
         </div>
         <i class="fa fa-bars menu-toggle"></i>
         <ul class="nav">
@@ -42,41 +45,53 @@
     <!--left sidebar-->
     <div class="left-sidebar">
         <ul>
-            <li><a href="index.html">Manage Posts</a></li>
-            <li><a href="../topics/index.html">Manage Topics</a></li>
+            <li><a href="index.php">Manage Posts</a></li>
+            <li><a href="../topics/index.php">Manage Topics</a></li>
         </ul>
     </div>
     <!--//left sidebar-->
     <!--admin content-->
     <div class="admin-content">
         <div class="button-group">
-            <a href="create-posts.html" class="btn btn-big">Add Post</a>
-            <a href="index.html" class="btn btn-big">Manage Posts</a>
+            <a href="create-posts.php" class="btn btn-big">Add Post</a>
+            <a href="index.php" class="btn btn-big">Manage Posts</a>
             <div class="content">
                 <h2 class="page-title">Manage Posts</h2>
                 <table>
                     <thead>
                         <th>SN</th>
                         <th>Title</th>
-                        <th>Author</th>
+                        <th>Topic</th>
+                        <th>Created-at</th>
                         <th colspan="3">Action</th>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>This is The first post</td>
-                            <td><a href="#" class="edit">edit</a></td>
-                            <td><a href="#" class="delete">delete</a></td>
-                            <td><a href="#" class="publish">publish</a></td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>This is The first post</td>
-                            <td><a href="#" class="edit">edit</a></td>
-                            <td><a href="#" class="delete">delete</a></td>
-                            <td><a href="#" class="publish">publish</a></td>
-                        </tr>
-                       
+                        <?php foreach ($posts as $key => $post): ?>
+                            <tr>
+                                <td><?php echo $key + 1; ?></td>
+                                <td><?php echo $post['title']; ?></td>
+                                <td>
+                                <?php
+                                $currentTopic = '';
+                                foreach ($topics as $topic) {
+                                    if ($post['topic_id'] == $topic['id']) {
+                                        $currentTopic = $topic['name'];
+                                        break;
+                                    }
+                                }
+                                echo $currentTopic;
+                                 ?>
+                                </td>
+                                <td><?php echo $post['created_at']; ?></td>
+                                <td><a href="edit.php?edit_id=<?php echo $post['id']; ?>" class="edit">edit</a></td>
+                                <td><a href="index.php?delete_id=<?php echo $post['id']; ?>" class="delete">delete</a></td>
+                                <?php if ($post['published']){?>
+                                    <td><a href="index.php?Unpublish_id=<?php echo $post['id']; ?>"  class="Unpublish">Unpublish</a></td>
+                                <?php } else {?>
+                                    <td><a href="index.php?publish_id=<?php echo $post['id']; ?>"  class="publish" >publish</a></td>
+                                <?php }?>
+                            </tr>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>

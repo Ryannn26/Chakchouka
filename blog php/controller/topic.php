@@ -1,7 +1,6 @@
 <?php
 // Include database configuration
-include("../../apps/database/config.php");
-
+include("database/config.php");
 // Initialize variables
 $errors = [];
 $id = "";
@@ -27,7 +26,7 @@ if (isset($_POST['add-topic'])) {
         $stmt->bindParam(':description', $description);
         $stmt->execute();
 
-        header("Location: index.php");
+        header("Location: ../../admin/topics/index.php");
         exit();
     }
 }
@@ -56,7 +55,6 @@ if (isset($_POST['update-topic'])) {
     if (empty($description)) {
         array_push($errors, "Description is required");
     }
-
     if (count($errors) === 0) {
         $stmt = $conn->prepare("UPDATE topics SET name = :name, description = :description WHERE id = :id");
         $stmt->bindParam(':name', $name);
@@ -64,7 +62,7 @@ if (isset($_POST['update-topic'])) {
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
 
-        header("Location: index.php");
+        header("Location: ../../admin/topics/index.php");
         exit();
     }
 }
@@ -76,10 +74,9 @@ if (isset($_GET['delete_id'])) {
     $stmt->bindParam(':id', $id, PDO::PARAM_INT);
     $stmt->execute();
 
-    header("Location: index.php");
+    header("Location: ../../admin/topics/index.php");
     exit();
 }
-
 // Fetch all topics
 $stmt = $conn->prepare("SELECT * FROM topics");
 $stmt->execute();
